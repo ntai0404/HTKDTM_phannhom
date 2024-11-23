@@ -8,6 +8,10 @@ OUTPUT_PATH = 'phannhom.csv'
 # CSS tùy chỉnh
 st.markdown(
     """
+    <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    </head>
     <style>
     body {
         font-family: Arial, sans-serif;
@@ -17,8 +21,8 @@ st.markdown(
     }
     .web {
         max-width: 800px;
-        margin: 20px auto;
-        padding: 20px;
+        margin: 0;
+        padding: 0;
         background-color: #fff;
         border-radius: 8px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -39,6 +43,7 @@ st.markdown(
         color: #FFFAFA;
     }
     </style>
+    
     """, unsafe_allow_html=True
 )
 
@@ -67,13 +72,19 @@ else:
         if ho_ten:
             filters.append(df["Họ Tên"] == ho_ten)
         if gpa:
-            filters.append(df["GPA"] == float(gpa))
+            try:
+                filters.append(df["GPA"] == float(gpa))
+            except ValueError:
+                st.error("GPA phải là số!")
         if so_thich:
             filters.append(df["Sở Thích"] == so_thich)
         if ky_nang:
             filters.append(df["Kỹ Năng"] == ky_nang)
 
-        if filters:
+        # Kiểm tra nếu không có điều kiện lọc
+        if not filters:
+            st.warning("Vui lòng nhập ít nhất một trường thông tin!")
+        else:
             try:
                 # Áp dụng bộ lọc để tìm kiếm
                 result = df
@@ -82,13 +93,30 @@ else:
 
                 if not result.empty:
                     st.success("Kết quả tìm kiếm:")
-                    st.dataframe(result[["Họ Tên", "Nhóm"]])
+
+                    # Hiển thị kết quả trong bảng đơn giản
+                    st.markdown('<div class="web">', unsafe_allow_html=True)
+                    for _, row in result.iterrows():
+                        st.markdown(
+                            f"""
+                            <div style="margin-bottom: 10px; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                                <strong>Họ Tên:</strong> {row["Họ Tên"]} <br>
+                                <strong>Nhóm:</strong> {row["Nhóm"]}
+                            </div>
+                            """, unsafe_allow_html=True
+                        )
+                    st.markdown('</div>', unsafe_allow_html=True)
                 else:
                     st.warning("Không tìm thấy thông tin phù hợp trong dữ liệu.")
             except Exception as e:
                 st.error(f"Có lỗi xảy ra: {e}")
-        else:
-            st.warning("Vui lòng nhập ít nhất một trường thông tin!")
+
+
+
+
+
+
+
 
 
 
