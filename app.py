@@ -52,9 +52,6 @@ else:
     # Đọc dữ liệu từ file output.csv
     df = pd.read_csv(OUTPUT_PATH)
 
-    st.write("### Dữ liệu đã phân nhóm:")
-    st.dataframe(df)
-
     # Hiển thị form nhập liệu
     with st.form("input_form"):
         ho_ten = st.text_input("Họ Tên")
@@ -92,4 +89,5 @@ else:
                 st.error(f"Có lỗi xảy ra: {e}")
         else:
             st.warning("Vui lòng nhập ít nhất một trường thông tin!")
+
 
