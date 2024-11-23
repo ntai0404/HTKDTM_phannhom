@@ -39,14 +39,24 @@ while True:
         df.at[idx_to_move, "Nhóm"] = smallest_group
 
 # Kết quả phân cụm
-print("\nKết quả phân cụm:")
-print(df[["Họ Tên", "GPA", "Sở Thích", "Kỹ Năng", "Nhóm"]])
-
-# Lưu kết quả phân cụm vào file CSV
-output_file = 'output.csv'
+output_file = './output.csv'
 df[["Họ Tên", "GPA", "Sở Thích", "Kỹ Năng", "Nhóm"]].to_csv(output_file, index=False)
 
 print(f"\nKết quả đã được lưu vào {output_file}")
+
+# Đọc lại dữ liệu gốc từ data.csv và kết quả phân cụm từ output.csv
+df_original = pd.read_csv(file_path)
+df_clustered = pd.read_csv(output_file)
+
+# Ghép cột "Nhóm" từ df_clustered vào df_original
+df_original["Nhóm"] = df_clustered["Nhóm"]
+
+# Lưu kết quả ghép vào phannhom.csv
+phannhom_file = './phannhom.csv'
+df_original.to_csv(phannhom_file, index=False)
+
+print(f"\nKết quả đã được lưu vào {phannhom_file}")
+
 
 
 

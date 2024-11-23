@@ -2,8 +2,8 @@ import streamlit as st
 import pandas as pd
 import os
 
-# Đường dẫn file output CSV
-OUTPUT_PATH = 'output.csv'
+# Đường dẫn file phannhom.csv
+OUTPUT_PATH = 'phannhom.csv'
 
 # CSS tùy chỉnh
 st.markdown(
@@ -45,11 +45,11 @@ st.markdown(
 # Tiêu đề ứng dụng
 st.markdown('<div class="header"><h1>Phân nhóm các thành viên</h1></div>', unsafe_allow_html=True)
 
-# Kiểm tra sự tồn tại của file output.csv
+# Kiểm tra sự tồn tại của file phannhom.csv
 if not os.path.exists(OUTPUT_PATH):
-    st.error("File kết quả không tồn tại. Vui lòng chạy mô hình trước!")
+    st.error("File kết quả không tồn tại. Vui lòng chạy mô hình trước để tạo phannhom.csv!")
 else:
-    # Đọc dữ liệu từ file output.csv
+    # Đọc dữ liệu từ file phannhom.csv
     df = pd.read_csv(OUTPUT_PATH)
 
     # Hiển thị form nhập liệu
@@ -89,5 +89,6 @@ else:
                 st.error(f"Có lỗi xảy ra: {e}")
         else:
             st.warning("Vui lòng nhập ít nhất một trường thông tin!")
+
 
 
