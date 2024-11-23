@@ -43,7 +43,7 @@ st.markdown(
 )
 
 # Tiêu đề ứng dụng
-st.markdown('<div class="header"><h1>Phân nhóm đối tượng</h1></div>', unsafe_allow_html=True)
+st.markdown('<div class="header"><h1>Phân nhóm các thành viên</h1></div>', unsafe_allow_html=True)
 
 # Kiểm tra sự tồn tại của file output.csv
 if not os.path.exists(OUTPUT_PATH):
