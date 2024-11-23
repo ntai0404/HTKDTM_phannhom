@@ -26,7 +26,7 @@ st.markdown(
     .header {
         text-align: center;
         margin-bottom: 20px;
-        background-image: url(https://img4.thuthuatphanmem.vn/uploads/2020/08/27/anh-nen-dep-ve-ha-noi_054022808.jpg);
+        background-image: url(https://www.workhuman.com/_next/image/?url=https%3A%2F%2Fimages.ctfassets.net%2Fhff6luki1ys4%2F2xNpvX7DjQC0L8k11uDOOO%2Fcc13cc48ebe85e2a59134597c85420e6%2FGroup-high-five-of-a-diverse-team-of-employees-in-an-office.png&w=3840&q=75);
         background-size: cover; 
         background-position: center;
         padding: 40px 20px; 
