@@ -92,7 +92,7 @@ else:
                     result = result.loc[condition]
 
                 if not result.empty:
-                    st.success("Kết quả tìm kiếm:")
+                    st.success("Kết quả phân nhóm:")
 
                     # Hiển thị kết quả trong bảng đơn giản
                     st.markdown('<div class="web">', unsafe_allow_html=True)
